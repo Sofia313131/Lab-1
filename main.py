@@ -3,7 +3,8 @@ BLUE = '\u001b[44m'
 WHITE = '\u001b[47m'
 END = '\u001b[0m'
 
-'''for i in range(6):
+'''
+for i in range(6):
     if i < 3:
         print(f'{BLUE}{"  " * (2 * i + 2)}{WHITE}{"  " * (14 - 2 * i)}{END}')
     else:
