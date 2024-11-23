@@ -7,11 +7,30 @@ END = '\u001b[0m'
 SEP_COUNT = 3
 
 # ========== Task 1 ============
-print(f"""{RED}                     {END}
-{RED}         {WHITE}   {RED}         {END}
-{RED}      {WHITE}         {RED}      {END}
-{RED}         {WHITE}   {RED}         {END}
-{RED}                     {END}""")
+
+
+def draw_flag(n, m):
+    assert n % 2 == m % 2, "Числа должны быть одинаковой чётности"
+    if n % 2 == 0:
+        assert n >= 8 and m >= 20, "Минимальные размеры чётного флага 8x20."
+    else:
+        assert n >= 5 and m >= 11, "Минимальные размеры нечётного флага 5x11."
+    h = min((n - 2) // 3, (m - 2) // 9)
+    bn = (n - h * 3) // 2
+    bm = (m - h * 9) // 2
+    for _ in range(bn):
+        print(RED, " " * m, END, sep="")
+    for _ in range(h):
+        print(RED, " " * (bm + h * 3), WHITE, " " * (h * 3), RED, " " * (m - bm - h * 6), END, sep="")
+    for _ in range(h):
+        print(RED, " " * bm, WHITE, " " * (h * 9), RED, " " * (m - bm - h * 9), END, sep="")
+    for _ in range(h):
+        print(RED, " " * (bm + h * 3), WHITE, " " * (h * 3), RED, " " * (m - bm - h * 6), END, sep="")
+    for _ in range(n - bn - h * 3):
+        print(RED, " " * m, END, sep="")
+
+
+draw_flag(5, 21)
 
 # ========== Separate ==========
 for _ in range(SEP_COUNT):
